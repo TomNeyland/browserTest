@@ -1,12 +1,13 @@
 'use strict';
 
 import angular from 'angular';
+import uiBootStrap from 'angular-bootstrap'
 import uiRouter from 'angular-ui-router';
 import browserTest from './tech-test/browserTest.js'
 
-var techRouter = angular.module('techRouter', ['ui.router']);
+var techDemo = angular.module('techDemo', ['ui.router']);
 
-techRouter.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+techDemo.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/tech-test');
     // HOME STATES AND NESTED VIEWS ========================================
     $stateProvider
@@ -17,4 +18,4 @@ techRouter.config(['$stateProvider', '$urlRouterProvider', function ($stateProvi
         });
 }]);
 
-export default techRouter;
+export default techDemo;

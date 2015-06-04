@@ -1,6 +1,12 @@
+// Icons
+$icon-font-path: "../../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
+
 // Core variables and mixins
+@import "../../node_modules/bootswatch-scss/united/variables";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables";
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_glyphicons";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap";
+@import "../../node_modules/bootswatch-scss/united/bootswatch";
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
 // Utility classes
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/utilities";
