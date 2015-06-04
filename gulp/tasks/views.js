@@ -9,6 +9,6 @@ gulp.task('views', function() {
     gulp.src(['index.html'])
         .pipe(gulp.dest('build/'));
 
-    gulp.src(['public/app/*.html', 'public/**/*.html', 'public/**/*.json','public/**/*.png'])
+    gulp.src(['public/app/*.html', 'public/**/*.js', 'public/**/*.json','public/**/*.png'])
         .pipe(gulp.dest('build/app'));
 });
