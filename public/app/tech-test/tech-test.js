@@ -7,7 +7,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
-var techTest = angular.module('techDemo', ['ui.router']);
+var techTest = angular.module('techDemo.techDemo', ['ui.router']);
 
 console.log("Function has not yet run!");
 
