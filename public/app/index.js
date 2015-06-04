@@ -14,7 +14,7 @@ techDemo.config(['$stateProvider', '$urlRouterProvider', function ($stateProvide
         .state('tech-test', {
             url: '/tech-test',
             template: require('./tech-test/_tech-test.html'),
-            controllerAs: browserTest
+            controllerAs: 'browserTest'
         });
 }]);
 
