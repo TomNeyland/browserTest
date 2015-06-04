@@ -20,10 +20,10 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/build'));
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
+    res.sendFile(path.join(__dirname + '/build/index.html'));
 });
 
 app.listen(port);
