@@ -14,8 +14,6 @@
     "angular-ui-router": "^0.2.14",
     "babelify": "^6.0.2",
     "body-parser": "^1.12.4",
-    "bootstrap-sass": "^3.3.4",
-    "bootswatch-scss": "^3.2.0",
     "browserify": "^9.0.8",
     "del": "^1.1.1",
     "express": "^4.12.4",
