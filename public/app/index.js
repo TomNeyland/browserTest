@@ -2,17 +2,19 @@
 
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import browserTest from './tech-test/browserTest.js'
 
-var routerDemo = angular.module('tech-demo', ['ui.router']);
+var techRouter = angular.module('techRouter', ['ui.router']);
 
-routerDemo.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+techRouter.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/tech-test');
     // HOME STATES AND NESTED VIEWS ========================================
     $stateProvider
         .state('tech-test', {
             url: '/tech-test',
-            template: require('./tech-test/_tech-test.html')
+            template: require('./tech-test/_tech-test.html'),
+            controllerAs: browserTest
         });
 }]);
 
-export default routerDemo;
+export default techRouter;

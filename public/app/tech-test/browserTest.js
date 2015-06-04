@@ -2,6 +2,14 @@
  * Created by skessler on 6/3/15.
  */
 
+'use strict';
+
+import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+
+var browserTest = angular.module('tech-demo', ['ui.router']);
+
+
 console.log("Function has not yet run!");
 
 angular.module('testApp', [])
@@ -27,3 +35,7 @@ angular.module('testApp', [])
     });
 
 console.log("Function did not run");
+
+export default browserTest;
+
+
