@@ -4,9 +4,12 @@
 
 console.log("Function has not yet run!");
 
-angular.module('testApp', [])
-    .controller('fetchAssets', function fetchAssets($scope, $http) {
-        console.log("this is running");
+var testApp = angular.module('testApp', ['ui.router', 'ngCsv', 'ngSanitize'])
+
+testApp.controller('fetchAssets', function fetchAssets($scope, $http) {
+    console.log("this is running");
+
+    $scope.runTest = function () {
         $scope.assetUrls = [
             'https://d1cqkmkxyobhx.cloudfront.net/assets/js_libs/addlive/addlive-ui-sdk.js',
             'http://d0.awsstatic.com/product-marketing/S3/S3_Sketch_Durable.png',
@@ -24,6 +27,20 @@ angular.module('testApp', [])
                 console.log("this ran");
             });
         });
-    });
+    };
 
-console.log("Function did not run");
+})
+
+testApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/browserTest');
+
+    // HOME STATES AND NESTED VIEWS ========================================
+    $stateProvider
+        .state('browserTest', {
+            url: '/browserTest',
+            template: require('./index.html'),
+            controllerAs: 'fetchAssets'
+        });
+}]);
+
+
