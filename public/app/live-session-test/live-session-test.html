@@ -1,5 +1,7 @@
 <script src="../assets/vender-libs/sha256.js"></script>
 <script src="../assets/vender-libs/tutorial-scripts.js"></script>
+<script src="../assets/vender-libs/shared-scripts.js"></script>
+
 <!-- <script src="../assets/vender-libs/addlive.js"></script> -->
 <script type="text/javascript"
         src="//d36pfzlm4aixmv.cloudfront.net/stable_v3/addlive-sdk.js"></script>
@@ -7,18 +9,24 @@
 
 <div class="container">
     <div class="main wide">
-        <h1 id="tutorialTitle">AddLive SDK Tutorial 6</h1>
-
-        <h2 id="tutorialSubTitle">Conference app</h2>
-
         <a id="installBtn" href="#" class="btn btn-primary">Install AddLive
             Plug-in</a>
+
+        <!-- Beginning of march edits -->
+        <div class="row">
+            <div id="rendererBigTmpl" class="render-widget">
+                <div><span id="bigUserIdLbl">No remote user specified yet</span></div>
+                <div id="renderBigPreview" class="render-wrapper-big"></div>
+            </div>
+        </div>
+        <!-- end of march edits -->
+
 
         <!-- Beginning of the video feeds rendering section -->
         <div id="renderingWrapper" class="rendering-wrapper">
 
-            <div class="render-widget">
-                <div>Local preview (user id: <span id="localUserIdLbl">undefined</span>)
+            <div id="local-render-widget" class="render-widget">
+                <div style="background-color:yellow">Local user: <span class="user-id-wrapper" id="localUserIdLbl">undefined</span>
                 </div>
                 <div id="renderLocalPreview" class="render-wrapper"></div>
             </div>
@@ -38,11 +46,11 @@
 
                 <!--Connect disconnect buttons -->
                 <div class="ctrl-wrapper">
-                    <input id="scopeIdTxtField" type="text" placeholder="Scope ID">
+                    <!-- <input id="scopeIdTxtField" type="text" placeholder="Scope ID"> -->
                     <a id="connectBtn" href="javascript://nop"
-                       class="btn btn-primary disabled">Connect</a>
+                       class="btn btn-primary disabled" onClick="Stopwatch.start();">Connect</a>
                     <a id="disconnectBtn" href="javascript://nop"
-                       class="btn btn-danger disabled">Disconnect</a>
+                       class="btn btn-danger disabled" onClick="Stopwatch.stop();">Disconnect</a>
                 </div>
 
                 <!-- Publish/unpublish section -->
@@ -88,18 +96,15 @@
             </div>
         </div>
         <!-- End of the user's controls section -->
-
     </div>
-
-
     <!--
          Beginning of the templates section. There is only one template -  remote
          video feed renderer
     -->
     <div id="templatesContainer">
         <div id="rendererTmpl" class="render-widget remote-renderer">
-            <div>Remote user (user id: <span class="user-id-wrapper">undefined</span>).
-                <span class="muted-indicator">Audio is muted</span>
+            <div style="background-color:yellow">Remote user: <span class="user-id-wrapper">undefined</span>
+                <span class="muted-indicator">Audio off</span>
             </div>
             <div class="render-wrapper"></div>
             <div class="no-video-text">

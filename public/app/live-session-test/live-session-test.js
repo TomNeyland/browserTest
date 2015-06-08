@@ -7,8 +7,67 @@
  */
 
 
+var adjustSizing = function (currentElement) {
+    $( "*" ).removeClass('render-wrapper-big');
+    var current_render_wrapper = $(currentElement).children();
+    $(current_render_wrapper['1']).addClass('render-wrapper-big');
+};
+
+$( document ).ready(function() {
+
+    $( "#local-render-widget" ).click(function() {
+        // adjustSizing(this);
+        console.log('clicking on the local');
+
+        var localUserId = $(this).find('.user-id-wrapper')['0']['innerText'];
+
+        var localSinkId = userSinkLookup['local'];
+
+        if (localSinkId) {
+            ADL.renderSink({
+                sinkId:localSinkId,
+                containerId:'renderBigPreview'
+            });
+
+            var renderer = $('#rendererBigTmpl');
+            renderer.find('#bigUserIdLbl').text('Currently broadcasting local user');
+
+
+        }
+
+
+    });
+
+    $('.remote-renderer').live("click", function() {
+
+        var remoteYellowUserId = $(this).find('.user-id-wrapper')['0']['innerText'];
+
+        var remoteSinkId = userSinkLookup[remoteYellowUserId];
+
+        if (remoteSinkId) {
+            ADL.renderSink({
+                sinkId:remoteSinkId,
+                containerId:'renderBigPreview'
+            });
+
+
+            var renderer = $('#rendererBigTmpl');
+            renderer.find('#bigUserIdLbl').text('Currently broadcasting ' + remoteYellowUserId);
+
+
+        }
+
+
+    });
+
+});
+
+
+var userSinkLookup = {};
+
 (function (w) {
     'use strict';
+
 
 
     // Scope constants
@@ -175,6 +234,10 @@
         $('#renderingWrapper').append(renderer);
         if (e.videoPublished) {
             // 3a. Render the sink if the video stream is being published.
+
+            userSinkLookup[e.userId] = e.videoSinkId;
+
+
             ADL.renderSink({
                 sinkId:e.videoSinkId,
                 containerId:'renderer' + e.userId
@@ -249,6 +312,9 @@
         // 1. Define the result handler
         var resultHandler = function (sinkId) {
             console.log('Local preview started. Rendering the sink with id: ' + sinkId);
+
+            userSinkLookup['local'] = sinkId;
+
             ADL.renderSink({
                 sinkId:sinkId,
                 containerId:'renderLocalPreview',
@@ -274,7 +340,7 @@
         $('#connectBtn').unbind('click').addClass('disabled');
 
         // 2. Get the scope id and generate the user id.
-        scopeId = $('#scopeIdTxtField').val();
+        scopeId = '22';
 
         // assuming the genRandomUserId is exposed via ADLT namespace.
         // (check shared-assets/scripts.js)
@@ -355,6 +421,10 @@
 
         // 3. Update the local user id label
         $('#localUserIdLbl').html(userId);
+
+
+
+
     }
 
     function genConnectionDescriptor(scopeId, userId) {
