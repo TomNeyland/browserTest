@@ -4,7 +4,24 @@
 
 console.log("Function has not yet run!");
 
-var testApp = angular.module('testApp', ['ui.router', 'ngCsv', 'ngSanitize'])
+var testApp = angular.module('testApp', ['ui.router', 'ngCsv', 'ngSanitize']);
+
+testApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/browserTest');
+
+    // HOME STATES AND NESTED VIEWS ========================================
+    $stateProvider
+        .state('techTest', {
+            url: '/techTest',
+            templateUrl: ('public/app/tech-test/tech-test.html'),
+            controllerAs: 'runTest'
+        })
+
+        .state('liveSessionTest', {
+            url: '/liveSessionTest',
+            templateUrl: ('public/app/live-session-test/live-session-test.html'),
+        });
+}]);
 
 testApp.controller('fetchAssets', function fetchAssets($scope, $http) {
     console.log("this is running");
@@ -28,19 +45,6 @@ testApp.controller('fetchAssets', function fetchAssets($scope, $http) {
             });
         });
     };
-
-})
-
-testApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/browserTest');
-
-    // HOME STATES AND NESTED VIEWS ========================================
-    $stateProvider
-        .state('browserTest', {
-            url: '/browserTest',
-            template: require('./index.html'),
-            controllerAs: 'fetchAssets'
-        });
-}]);
+});
 
 
