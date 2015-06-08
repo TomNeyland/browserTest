@@ -7,7 +7,7 @@ console.log("Function has not yet run!");
 var testApp = angular.module('testApp', ['ui.router', 'ngCsv', 'ngSanitize']);
 
 testApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/browserTest');
+    $urlRouterProvider.otherwise('/techTest');
 
     // HOME STATES AND NESTED VIEWS ========================================
     $stateProvider
@@ -41,7 +41,6 @@ testApp.controller('fetchAssets', function fetchAssets($scope, $http) {
         $scope.assetUrls.map(function (url) {
             $http.get(url).then(function (response) {
                 $scope.assetResponses.push(response);
-                console.log("this ran");
             });
         });
     };
