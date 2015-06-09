@@ -1,32 +1,6 @@
-/**
- * Created by skessler on 6/3/15.
- */
-
-console.log("Function has not yet run!");
-
 var testApp = angular.module('testApp', ['ui.router', 'ngCsv', 'ngSanitize']);
 
-testApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-    $urlRouterProvider.otherwise('/techTest');
-
-    // HOME STATES AND NESTED VIEWS ========================================
-    $stateProvider
-        .state('techTest', {
-            url: '/techTest',
-            templateUrl: ('public/app/tech-test/tech-test.html'),
-            controller: 'fetchAssetsCtrl',
-            controllerAs: 'fetchAssets'
-        })
-
-        .state('liveSessionTest', {
-            url: '/liveSessionTest',
-            templateUrl: ('public/app/live-session-test/live-session-test.html'),
-        });
-}]);
-
-testApp.controller('fetchAssetsCtrl', function fetchAssetsCtrl($scope, $http) {
-    console.log("this is running");
-
+function fetchAssetsCtrl($scope, $http, $q) {
     this.runTest = function () {
         this.assetUrls = [
             'https://d1cqkmkxyobhx.cloudfront.net/assets/js_libs/addlive/addlive-ui-sdk.js',
@@ -45,6 +19,26 @@ testApp.controller('fetchAssetsCtrl', function fetchAssetsCtrl($scope, $http) {
             }.bind(this));
         }.bind(this));
     };
-});
+}
 
+fetchAssetsCtrl.controller('fetchAssetsCtrl', ['$scope', '$http', '$q', '$stateParams', fetchAssetsCtrl]);
+
+
+testApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/techTest');
+
+    // HOME STATES AND NESTED VIEWS ========================================
+    $stateProvider
+        .state('techTest', {
+            url: '/techTest',
+            templateUrl: ('public/app/tech-test/tech-test.html'),
+            controller: 'fetchAssetsCtrl',
+            controllerAs: 'FetchAssets'
+        })
+
+        .state('liveSessionTest', {
+            url: '/liveSessionTest',
+            templateUrl: ('public/app/live-session-test/live-session-test.html'),
+        });
+}]);
 
