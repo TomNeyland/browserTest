@@ -15,7 +15,7 @@ testApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider
             url: '/techTest',
             templateUrl: ('public/app/tech-test/tech-test.html'),
             controller: 'fetchAssetsCtrl',
-            controllerAs: 'runTest'
+            controllerAs: 'fetchAssets'
         })
 
         .state('liveSessionTest', {
