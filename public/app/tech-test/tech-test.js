@@ -1,6 +1,7 @@
 var fetchAssets = angular.module('fetchAssets', ['ui.router', 'ngCsv', 'ngSanitize']);
 
 function fetchAssetsCtrl($scope, $http) {
+
     this.runTest = function () {
         this.assetUrls = [
             'https://d1cqkmkxyobhx.cloudfront.net/assets/js_libs/addlive/addlive-ui-sdk.js',
@@ -14,7 +15,7 @@ function fetchAssetsCtrl($scope, $http) {
 
         this.assetResponses = [];
         this.assetUrls.map(function (url) {
-            this.get(url).then(function (response) {
+            $http.get(url).then(function (response) {
                 this.assetResponses.push(response);
             }.bind(this));
         }.bind(this));

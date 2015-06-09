@@ -60,7 +60,7 @@
         </tr>
         </tbody>
     </table>
-    <button class="btn btn-success glyphicon glyphicon-play" ng-click="fetchAssets.runTest()"> Start</button>
+    <button class="btn btn-success glyphicon glyphicon-play" ng-click="FetchAssets.runTest()"> Start</button>
     <button class="btn btn-primary glyphicon glyphicon-download-alt" ng-csv="getArray()"
             csv-header="['#', 'Technology','Status' ]" filename="browserTest.csv"> Export
     </button>
@@ -69,7 +69,7 @@
 <div class="container alert alert-dismissible alert-warning">
     <div> Debug Logging:</div>
     <ul>
-        <li ng-repeat="assetResponse in fetchAssets.assetResponses">
+        <li ng-repeat="assetResponse in FetchAssets.assetResponses">
             {{assetResponse.config.url}} loaded with status code {{assetResponse.status}};
         </li>
     </ul>
