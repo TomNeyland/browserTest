@@ -2,9 +2,6 @@ var fetchAssets = angular.module('fetchAssets', ['ui.router', 'ngCsv', 'ngSaniti
 
 function fetchAssetsCtrl($http) {
     this.assets = [{
-        url: 'https://d1cqkmkxyobhx.cloudfront.net/assets/js_libs/addlive/addlive-ui-sdk.js',
-        name: 'Javascript'
-    }, {
         url: 'http://d0.awsstatic.com/product-marketing/S3/S3_Sketch_Durable.png',
         name: 'Images'
     }, {
@@ -16,6 +13,12 @@ function fetchAssetsCtrl($http) {
     }, {
         url: 'http://www.kaltura.com/tiny/gysea',
         name: 'Video'
+    }, {
+        url: 'http://www.contentful.com/',
+        name: 'Content'
+    }, {
+        url: 'https://d1cqkmkxyobhx.cloudfront.net/assets/js_libs/addlive/addlive-ui-sdk.js',
+        name: 'Javascript'
     }, {
         url: 'http://www.realappeal.com/',
         name: 'Real Appeal Domain'
