@@ -1,6 +1,6 @@
 var testApp = angular.module('testApp', ['ui.router', 'ngCsv', 'ngSanitize']);
 
-function fetchAssetsCtrl($scope, $http, $q) {
+function fetchAssetsCtrl($scope, $http) {
     this.runTest = function () {
         this.assetUrls = [
             'https://d1cqkmkxyobhx.cloudfront.net/assets/js_libs/addlive/addlive-ui-sdk.js',
@@ -21,7 +21,7 @@ function fetchAssetsCtrl($scope, $http, $q) {
     };
 }
 
-fetchAssetsCtrl.controller('fetchAssetsCtrl', ['$scope', '$http', '$q', '$stateParams', fetchAssetsCtrl]);
+testApp.controller('fetchAssetsCtrl', ['$scope', '$http', '$stateParams', fetchAssetsCtrl]);
 
 
 testApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
