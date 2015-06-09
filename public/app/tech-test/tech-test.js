@@ -1,28 +1,43 @@
 var fetchAssets = angular.module('fetchAssets', ['ui.router', 'ngCsv', 'ngSanitize']);
 
-function fetchAssetsCtrl($scope, $http) {
+function fetchAssetsCtrl($http) {
+    this.assets = [{
+        url: 'https://d1cqkmkxyobhx.cloudfront.net/assets/js_libs/addlive/addlive-ui-sdk.js',
+        name: 'Cloudfront'
+    }, {
+        url: 'http://d0.awsstatic.com/product-marketing/S3/S3_Sketch_Durable.png',
+        name: 's3'
+    }, {
+        url: 'http://www.surveygizmo.com/collab/2174898/test',
+        name: 'Survey Gizmo'
+    }, {
+        url: 'http://corp.kaltura.com/',
+        name: 'Kaltura'
+    }, {
+        url: 'http://www.realappeal.com/',
+        name: 'Real Appeal Domain'
+    }, {
+        url: 'http://healthfleet.com/',
+        name: 'Health Fleet Domain'
+    }, {
+        url: 'http://www.zillion.com/',
+        name: 'Zillion Domain'
+    }];
+
+    this.assetResponses = [];
 
     this.runTest = function () {
-        this.assetUrls = [
-            'https://d1cqkmkxyobhx.cloudfront.net/assets/js_libs/addlive/addlive-ui-sdk.js',
-            'http://d0.awsstatic.com/product-marketing/S3/S3_Sketch_Durable.png',
-            'http://www.surveygizmo.com/collab/2174898/test',
-            'http://corp.kaltura.com/',
-            'http://www.realappeal.com/',
-            'http://healthfleet.com/',
-            'http://www.zillion.com/'
-        ];
 
-        this.assetResponses = [];
-        this.assetUrls.map(function (url) {
-            $http.get(url).then(function (response) {
-                this.assetResponses.push(response);
+        this.assets.map(function (asset) {
+            $http.get(asset.url).then(function (response) {
+                asset.response = response;
+                this.assetResponses.push(asset);
             }.bind(this));
         }.bind(this));
     };
 }
 
-fetchAssets.controller('fetchAssetsCtrl', ['$scope', '$http', fetchAssetsCtrl]);
+fetchAssets.controller('fetchAssetsCtrl', ['$http', fetchAssetsCtrl]);
 
 
 fetchAssets.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
