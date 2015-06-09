@@ -38,7 +38,7 @@ fetchAssets.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
 
         .state('liveSessionTest', {
             url: '/liveSessionTest',
-            templateUrl: ('public/app/live-session-test/live-session-test.html'),
+            templateUrl: ('public/app/live-session-test/live-session-test.html')
         });
 }]);
 
