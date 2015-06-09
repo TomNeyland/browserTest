@@ -1,4 +1,4 @@
-var testApp = angular.module('testApp', ['ui.router', 'ngCsv', 'ngSanitize']);
+var fetchAssets = angular.module('fetchAssets', ['ui.router', 'ngCsv', 'ngSanitize']);
 
 function fetchAssetsCtrl($scope, $http) {
     this.runTest = function () {
@@ -21,10 +21,10 @@ function fetchAssetsCtrl($scope, $http) {
     };
 }
 
-testApp.controller('fetchAssetsCtrl', ['$scope', '$http', '$stateParams', fetchAssetsCtrl]);
+fetchAssets.controller('fetchAssetsCtrl', ['$scope', '$http', fetchAssetsCtrl]);
 
 
-testApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+fetchAssets.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/techTest');
 
     // HOME STATES AND NESTED VIEWS ========================================
