@@ -22,6 +22,9 @@ function fetchAssetsCtrl($http) {
     }, {
         url: 'http://www.zillion.com/',
         name: 'Zillion Domain'
+    }, {
+        url: 'http://notawebsite.io',
+        name: 'Test Case Built To Fail'
     }];
 
     this.assetResponses = [];

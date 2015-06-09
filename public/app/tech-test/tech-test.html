@@ -12,7 +12,7 @@
             <td>{{$index +1}}</td>
             <td>{{asset.name}}</td>
             <td>
-                <span ng-if="asset.response === undefined" class="label label-default">Loading</span>
+                <span ng-if="asset.response === undefined" class="label label-default">Untested</span>
                 <span ng-if="asset.response !== undefined && asset.response.status !== 200" class="label label-danger">Fail</span>
                 <span ng-if="asset.response !== undefined && asset.response.status === 200" class="label label-success">Pass</span>
             </td>
