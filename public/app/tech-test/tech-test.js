@@ -3,28 +3,31 @@ var fetchAssets = angular.module('fetchAssets', ['ui.router', 'ngCsv', 'ngSaniti
 function fetchAssetsCtrl($http) {
     this.assets = [{
         url: 'https://d1cqkmkxyobhx.cloudfront.net/assets/js_libs/addlive/addlive-ui-sdk.js',
-        name: 'Cloudfront'
+        name: 'Javascript'
     }, {
         url: 'http://d0.awsstatic.com/product-marketing/S3/S3_Sketch_Durable.png',
-        name: 's3'
+        name: 'Images'
+    }, {
+        url: 'https://use.typekit.net/mme7cvn.js',
+        name: 'Fonts'
     }, {
         url: 'http://www.surveygizmo.com/collab/2174898/test',
-        name: 'Survey Gizmo'
+        name: 'Survey'
     }, {
-        url: 'http://corp.kaltura.com/',
-        name: 'Kaltura'
+        url: 'http://www.kaltura.com/tiny/gysea',
+        name: 'Video'
     }, {
         url: 'http://www.realappeal.com/',
         name: 'Real Appeal Domain'
     }, {
-        url: 'http://healthfleet.com/',
-        name: 'Health Fleet Domain'
-    }, {
         url: 'http://www.zillion.com/',
         name: 'Zillion Domain'
     }, {
-        url: 'http://notawebsite.io',
-        name: 'Test Case Built To Fail'
+        url: 'fakesitename.io',
+        name: 'THIS IS MADE TO FAIL'
+    }, {
+        url: 'http://fakesitename.io',
+        name: 'THIS IS MADE TO FAIL PART 2'
     }];
 
     this.assetResponses = [];
@@ -35,6 +38,7 @@ function fetchAssetsCtrl($http) {
             $http.get(asset.url).then(function (response) {
                 asset.response = response;
                 this.assetResponses.push(asset);
+                console.log(response);
             }.bind(this));
         }.bind(this));
     };

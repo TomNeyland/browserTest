@@ -1,3 +1,5 @@
+
+
 <div class="container">
     <table class="table table-striped table-hover ">
         <thead>
@@ -19,7 +21,7 @@
         </tr>
     </table>
     <button class="btn btn-success glyphicon glyphicon-play" ng-click="FetchAssets.runTest()"> Start</button>
-    <button class="btn btn-primary glyphicon glyphicon-download-alt" ng-csv="getArray()"
+    <button class="btn btn-primary glyphicon glyphicon-download-alt" ng-csv="FetchAssets.assets"
             csv-header="['#', 'Technology','Status' ]" filename="browserTest.csv"> Export
     </button>
 </div>
