@@ -14,6 +14,7 @@ testApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider
         .state('techTest', {
             url: '/techTest',
             templateUrl: ('public/app/tech-test/tech-test.html'),
+            controller: 'fetchAssetsCtrl',
             controllerAs: 'runTest'
         })
 
@@ -23,11 +24,11 @@ testApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider
         });
 }]);
 
-testApp.controller('fetchAssets', function fetchAssets($scope, $http) {
+testApp.controller('fetchAssetsCtrl', function fetchAssetsCtrl($scope, $http) {
     console.log("this is running");
 
-    $scope.runTest = function () {
-        $scope.assetUrls = [
+    this.runTest = function () {
+        this.assetUrls = [
             'https://d1cqkmkxyobhx.cloudfront.net/assets/js_libs/addlive/addlive-ui-sdk.js',
             'http://d0.awsstatic.com/product-marketing/S3/S3_Sketch_Durable.png',
             'http://www.surveygizmo.com/collab/2174898/test',
@@ -37,12 +38,12 @@ testApp.controller('fetchAssets', function fetchAssets($scope, $http) {
             'http://www.zillion.com/'
         ];
 
-        $scope.assetResponses = [];
-        $scope.assetUrls.map(function (url) {
-            $http.get(url).then(function (response) {
-                $scope.assetResponses.push(response);
-            });
-        });
+        this.assetResponses = [];
+        this.assetUrls.map(function (url) {
+            this.get(url).then(function (response) {
+                this.assetResponses.push(response);
+            }.bind(this));
+        }.bind(this));
     };
 });
 
