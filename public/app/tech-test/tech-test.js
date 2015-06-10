@@ -5,7 +5,7 @@ function fetchAssetsCtrl($http) {
         url: 'http://d0.awsstatic.com/product-marketing/S3/S3_Sketch_Durable.png',
         name: 'Images'
     }, {
-        url: 'https://use.typekit.net/mme7cvn.js',
+        url: 'http://use.typekit.net/mme7cvn.js',
         name: 'Fonts'
     }, {
         url: 'http://www.surveygizmo.com/collab/2174898/test',
@@ -17,20 +17,17 @@ function fetchAssetsCtrl($http) {
         url: 'http://www.contentful.com/',
         name: 'Content'
     }, {
-        url: 'https://d1cqkmkxyobhx.cloudfront.net/assets/js_libs/addlive/addlive-ui-sdk.js',
+        url: 'http://d1cqkmkxyobhx.cloudfront.net/assets/lib/angularjs/angular.js',
         name: 'Javascript'
+    }, {
+        url: 'http://www.google-analytics.com/analytics.js',
+        name: 'Analytics'
     }, {
         url: 'http://www.realappeal.com/',
         name: 'Real Appeal Domain'
     }, {
         url: 'http://www.zillion.com/',
         name: 'Zillion Domain'
-    }, {
-        url: 'fakesitename.io',
-        name: 'THIS IS MADE TO FAIL'
-    }, {
-        url: 'http://fakesitename.io',
-        name: 'THIS IS MADE TO FAIL PART 2'
     }];
 
     this.assetResponses = [];
@@ -48,7 +45,6 @@ function fetchAssetsCtrl($http) {
 }
 
 fetchAssets.controller('fetchAssetsCtrl', ['$http', fetchAssetsCtrl]);
-
 
 fetchAssets.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/techTest');

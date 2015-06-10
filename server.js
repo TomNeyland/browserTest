@@ -6,12 +6,13 @@
 var express = require('express'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
+    cors = require('cors'),
     path = require('path'),
     app = express(),
     port = process.env.PORT || 3000;
 
 // logging
-app.use(morgan('dev'));
+app.use(morgan('dev'), cors());
 
 app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -22,7 +23,7 @@ app.use(function (req, res, next) {
 
 app.use(express.static(__dirname + '/'));
 
-app.get('/', function (req, res) {
+app.get('/', function (req, res, next) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
 });
 
