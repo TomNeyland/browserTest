@@ -24,20 +24,38 @@ function fetchAssetsCtrl($http) {
     }, {
         url: 'http://d1cqkmkxyobhx.cloudfront.net/assets/lib/angularjs/angular.js',
         name: 'Javascript',
-        method: 'xhr'
+        method: 'iframe'
     }];
 
     this.assetResponses = [];
 
     this.runTest = function () {
         this.assets.map(function (asset) {
-            if (this.assets.method === 'xhr') {
+            if (asset.method === 'xhr') {
                 $http.get(asset.url).then(function (response) {
                     asset.response = response;
                     this.assetResponses.push(asset);
                     console.log(response);
-                }.bind(this));
-            } else if (this.assets.method === 'iframe') {
+                }.bind(this))
+            } else if (asset.method === 'iframe') {
+                console.log('this ran!');
+                var importScript = (function (oHead) {
+                    function loadError(oError) {
+                        throw new URIError("The script " + oError.target.src + " is not accessible.");
+                    }
+
+                    return function (sSrc, fOnload) {
+                        var oScript = document.createElement("script");
+                        oScript.type = "text\/javascript";
+                        oScript.onerror = loadError;
+                        if (fOnload) {
+                            oScript.onload = fOnload;
+                        }
+                        oHead.appendChild(oScript);
+                        oScript.src = sSrc;
+                    }
+                })(document.head || document.getElementsByTagName("head")[0]);
+                console.log('this finished running!');
             }
         }.bind(this));
     };
@@ -56,10 +74,5 @@ fetchAssets.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             controller: 'fetchAssetsCtrl',
             controllerAs: 'FetchAssets'
         })
-
-        .state('liveSessionTest', {
-            url: '/liveSessionTest',
-            templateUrl: ('public/app/live-session-test/live-session-test.html')
-        });
 }]);
 
