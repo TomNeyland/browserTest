@@ -33,9 +33,6 @@
 </head>
 <body>
 <div id="conferenceTimeKeeper">
-    <div class="navbar-counter text-center">
-        <div class="stopwatch"></div>
-    </div>
 </div>
 <div class="main wide">
     <a id="installBtn" href="#" class="btn btn-primary">Install AddLive
@@ -145,89 +142,47 @@
         </div>
     </div>
 </div>
-
-<script>
-
-    var Stopwatch = (function () {
-        var s;
-        return {
-            settings: {
-                start: 0,
-                sw: document.querySelectorAll(".stopwatch")[0],
-                results: document.querySelectorAll(".results")[0],
-                mills: 0,
-                secs: 0,
-                mins: 0,
-                i: 1,
-                times: ["00:00:00"],
-                clearButton: "<a href=\"#\" class=\"button\" onClick=\"Stopwatch.clear();\">Clear</a>"
-            },
-            init: function () {
-                s = this.settings;
-                setInterval(this.timer, 1);
-            },
-            clear: function () {
-                s.i = 1,
-                        s.times = ["00:00"],
-                        s.results.innerHTML = s.clearButton;
-            },
-            lap: function () {
-                if (s.i === 1) {
-                    s.results.innerHTML = s.clearButton;
-                }
-                s.times.push(("0" + s.mins).slice(-2) + ":"
-                        + ("0" + s.secs).slice(-2) + ":"
-                        + ("0" + s.mills).slice(-2));
-                var diffTime = ("0" + Math.floor(s.times[s.i].split(":")[0]
-                                - s.times[s.i - 1].split(":")[0])).slice(-2)
-                        + ":"
-                        + ("0" + Math.floor(s.times[s.i].split(":")[1]
-                                - s.times[s.i - 1].split(":")[1])).slice(-2)
-                        + ":"
-                        + ("0" + (s.times[s.i].split(":")[2]
-                        - s.times[s.i - 1].split(":")[2])).slice(-2);
-                s.results.innerHTML = s.results.innerHTML + "<tr><td>"
-                        + s.times[s.i] + "</td><td>"
-                        + diffTime + "</td></tr>";
-                s.i++;
-            },
-            restart: function () {
-                s.mills = 0,
-                        s.secs = 0,
-                        s.mins = 0;
-                this.start();
-            },
-            start: function () {
-                s.stop = 0;
-            },
-            stop: function () {
-                s.stop = 1;
-            },
-            timer: function () {
-                if (s.stop === 0) {
-                    if (s.mills === 200) {
-                        s.secs++;
-                        s.mills = 0;
-                    }
-                    if (s.secs === 60) {
-                        s.mins++;
-                        s.secs = 0;
-                    }
-                    s.sw.innerHTML = ("0" + s.mins).slice(-2) + ":"
-                            + ("0" + s.secs).slice(-2)
-//                            + ("0" + s.mills).slice(-2);
-                    s.mills++;
-                }
-            }
-        };
-    })();
-    Stopwatch.init();
+</body>
+</html>
 
 
-</script>
+<!doctype html>
+<html lang="en" ng-app="fetchAssets">
+<link rel="stylesheet" href="public/tech-test/app.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.4/united/bootstrap.min.css">
+<link rel="icon" type="image/png" href="app/vender-libs/favicon.ico">
+<link rel="stylesheet" type="text/css"
+      href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css"/>
+<link rel="stylesheet" type="text/css"
+      href="app.css"/>
 
 
-<!-- End of the templates section. -->
+<head>
+    <meta charset="UTF-8">
+    <title>Browser Technology Test</title>
+</head>
 
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand"> <img class="img-responsive"
+                                                   src="app/vender-libs/Zillion_KO.png"></a>
+            <ul class="nav navbar-nav">
+                <li><a href="/public/live-session/index.html">Live Session Test</a></li>
+                <li><a href="/">Technology Test</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1>Live Video Chat Demo</h1>
+
+        <p>Welcome to the live video chat demo, please make sure that you have someone to chat with or demo scheduled
+            before advancing to the next page</p>
+
+        <p><a class="btn btn-primary btn-lg" href="app/index.html">Click here to begin</a></p></div>
+</div>
 </body>
 </html>
