@@ -39,7 +39,7 @@ function fetchAssetsCtrl($http) {
                 }.bind(this))
             } else if (asset.method === 'iframe') {
                 console.log('this ran!');
-                var importScript = (function (oHead) {
+                this.importScript = (function (oHead) {
                     function loadError(oError) {
                         throw new URIError("The script " + oError.target.src + " is not accessible.");
                     }
