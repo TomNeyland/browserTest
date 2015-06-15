@@ -24,7 +24,11 @@ app.use(function (req, res, next) {
 app.use(express.static(__dirname + '/'));
 
 app.get('/', function (req, res, next) {
-    res.sendFile(path.join(__dirname + '/public/index.html'));
+    res.sendFile(path.join(__dirname + '/public/tech-test/index.html'));
+});
+
+app.get('/public/live-session/index.html', function (req, res, next) {
+    res.sendFile(path.join(__dirname + '/public/live-session/index.html'));
 });
 
 app.listen(port);

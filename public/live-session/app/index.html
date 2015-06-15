@@ -7,9 +7,9 @@
     <script type="text/javascript"
             src="http://code.jquery.com/jquery-1.8.3.js"></script>
     <script type="text/javascript"
-            src="../shared-assets/scripts.js"></script>
+            src="vender-libs/scripts.js"></script>
     <script type="text/javascript"
-            src="../shared-assets/sha256.js"></script>
+            src="vender-libs/sha256.js"></script>
 
     <!-- Development, non-minimised SDK -->
     <script type="text/javascript"
@@ -26,9 +26,9 @@
 
     <!-- Shared stylesheet -->
     <link rel="stylesheet" type="text/css"
-          href="../shared-assets/styles.css"/>
+          href="vender-libs/styles.css"/>
     <link rel="stylesheet" type="text/css"
-          href="../shared-assets/bootstrap.min.css"/>
+          href="vender-libs/bootstrap.min.css"/>
 
 </head>
 <body>
@@ -51,12 +51,12 @@
     <!-- end of march edits -->
 
 
-
     <!-- Beginning of the video feeds rendering section -->
     <div id="renderingWrapper" class="rendering-wrapper">
 
         <div id="local-render-widget" class="render-widget">
-            <div style="background-color:yellow">Local user: <span class="user-id-wrapper" id="localUserIdLbl">undefined</span>
+            <div style="background-color:yellow">Local user: <span class="user-id-wrapper"
+                                                                   id="localUserIdLbl">undefined</span>
             </div>
             <div id="renderLocalPreview" class="render-wrapper"></div>
         </div>
@@ -148,7 +148,7 @@
 
 <script>
 
-    var Stopwatch = (function() {
+    var Stopwatch = (function () {
         var s;
         return {
             settings: {
@@ -162,16 +162,16 @@
                 times: ["00:00:00"],
                 clearButton: "<a href=\"#\" class=\"button\" onClick=\"Stopwatch.clear();\">Clear</a>"
             },
-            init: function() {
+            init: function () {
                 s = this.settings;
                 setInterval(this.timer, 1);
             },
-            clear: function() {
+            clear: function () {
                 s.i = 1,
                         s.times = ["00:00"],
                         s.results.innerHTML = s.clearButton;
             },
-            lap: function() {
+            lap: function () {
                 if (s.i === 1) {
                     s.results.innerHTML = s.clearButton;
                 }
@@ -179,31 +179,31 @@
                         + ("0" + s.secs).slice(-2) + ":"
                         + ("0" + s.mills).slice(-2));
                 var diffTime = ("0" + Math.floor(s.times[s.i].split(":")[0]
-                                - s.times[s.i-1].split(":")[0])).slice(-2)
+                                - s.times[s.i - 1].split(":")[0])).slice(-2)
                         + ":"
                         + ("0" + Math.floor(s.times[s.i].split(":")[1]
-                                - s.times[s.i-1].split(":")[1])).slice(-2)
+                                - s.times[s.i - 1].split(":")[1])).slice(-2)
                         + ":"
                         + ("0" + (s.times[s.i].split(":")[2]
-                        - s.times[s.i-1].split(":")[2])).slice(-2);
+                        - s.times[s.i - 1].split(":")[2])).slice(-2);
                 s.results.innerHTML = s.results.innerHTML + "<tr><td>"
                         + s.times[s.i] + "</td><td>"
                         + diffTime + "</td></tr>";
                 s.i++;
             },
-            restart: function() {
+            restart: function () {
                 s.mills = 0,
                         s.secs = 0,
                         s.mins = 0;
                 this.start();
             },
-            start: function() {
+            start: function () {
                 s.stop = 0;
             },
-            stop: function() {
+            stop: function () {
                 s.stop = 1;
             },
-            timer: function() {
+            timer: function () {
                 if (s.stop === 0) {
                     if (s.mills === 200) {
                         s.secs++;
@@ -225,7 +225,6 @@
 
 
 </script>
-
 
 
 <!-- End of the templates section. -->

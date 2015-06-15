@@ -1,5 +1,3 @@
-
-
 <div class="container">
     <table class="table table-striped table-hover ">
         <thead>
@@ -34,4 +32,22 @@
         </li>
     </ul>
 </div>
+
+<div class="container">
+    <button class="btn btn-default glyphicon glyphicon-play" ng-click="video=!video"> Show Video</button>
+
+    <div id="video" ng-show="video">
+        <iframe src="http://cdnapi.kaltura.com/html5/html5lib/v2.31.2/mwEmbedFrame.php/p/1846601/uiconf_id/30040881/entry_id/0_bqn6bjbj?wid=_1846601&iframeembed=true&playerId=kaltura_player&entry_id=0_bqn6bjbj"
+                width="560" height="315" allowfullscreen webkitallowfullscreen mozAllowFullScreen
+                frameborder="0"></iframe>
+    </div>
+
+    <button class="btn btn-default glyphicon glyphicon-play" ng-click="quiz=!quiz"> Show Quiz</button>
+    <div id="quiz" ng-show="quiz">
+        <iframe src="http://www.surveygizmo.com/collab/2174898/test" width="560" height="315"></iframe>
+    </div>
+
+</div>
+
+
 </div>
